@@ -1,0 +1,58 @@
+﻿@page
+@model MyApp.Namespace.UserRatesModel
+@{
+    ViewData["Title"] = "Rate todo";
+
+    ViewBag.Ratings = string.Join(", ", Model.Ratings);
+
+}
+<link href="~/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        @{
+            @foreach (var item in Model.ToDoList)
+            {
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">@item.Period</h4>
+                            <h6 class="card-title">@item.Difficulty</h6>
+                            <h6 class="card-title">@item.Category</h6>
+                            <h6 class="card-title">@item.Instruction</h6>
+                            <!-- Add other properties as needed -->
+                            <form method="post">
+                                <button type="submit" class="btn btn-primary" asp-page="Rate" asp-route-id="@item.Id">Rate it!</button><br>
+                            </form>
+                            <form method="post">
+                                 <button type="submit" class="btn btn-primary" asp-page="Favorite" asp-route-id="@item.Id">Add to Favorites</button>
+                            </form>
+                        </div>
+                        <div class="rateYo"></div>
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+</div>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/jquery.rateyo.min.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(function () {
+            var Ratings = [@ViewBag.Ratings],
+                stars = $('.rateYo');
+            for (var i = 0; i < stars.length; i++) {
+                $('.rateYo').eq(i).rateYo({
+                    rating: Ratings[i],
+                    readOnly: true
+                });
+            }
+        });
+    </script>
+}
