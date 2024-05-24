@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dL4DTmQeK7xUTGQaQWmQP93LTr0V2373kmVQ+zfzEL3droaqEXoI0B3b5iduqNWDVIISqkYX+IIZYA5ZhqomTw==",
+  "dgSpecHash": "n0lhZQ18K63oy20Mgshll9l6nNQh0h8WjsIbVXu7UU6owgBmNdFJi7Xo1uFf/En1GklUqNfEysVRaD+A4BNjlg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\loginDemo.csproj",
+  "projectFilePath": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\loginDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cans7\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\cans7\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -8290,11 +8290,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\loginDemo.csproj",
+      "projectUniqueName": "C:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\loginDemo.csproj",
       "projectName": "loginDemo",
-      "projectPath": "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\loginDemo.csproj",
+      "projectPath": "C:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\loginDemo.csproj",
       "packagesPath": "C:\\Users\\cans7\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\obj\\",
+      "outputPath": "C:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cans7\\AppData\\Roaming\\NuGet\\NuGet.Config"

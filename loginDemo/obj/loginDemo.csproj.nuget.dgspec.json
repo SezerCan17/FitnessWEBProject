@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\loginDemo.csproj": {}
+    "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\loginDemo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\loginDemo.csproj": {
+    "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\loginDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\loginDemo.csproj",
+        "projectUniqueName": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\loginDemo.csproj",
         "projectName": "loginDemo",
-        "projectPath": "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\loginDemo.csproj",
+        "projectPath": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\loginDemo.csproj",
         "packagesPath": "C:\\Users\\cans7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cans7\\Desktop\\FitnessWEB382_\\loginDemo\\obj\\",
+        "outputPath": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cans7\\AppData\\Roaming\\NuGet\\NuGet.Config"
