@@ -1,6 +1,8 @@
 using System.Security.Claims;
+using System.Linq;
 using loginDemo.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MyApp.Namespace
@@ -8,35 +10,50 @@ namespace MyApp.Namespace
     [Authorize]
     public class RateModel : PageModel
     {
-        public UserFitnessWebDatabaseContext ToDoDb = new();
+        private readonly UserFitnessWebDatabaseContext _context;
 
-        bool flag = false;
+        public RateModel(UserFitnessWebDatabaseContext context)
+        {
+            _context = context;
+        }
 
         public void OnGet()
         {
 
         }
 
-        public void OnPostRate(int id, int _rate)
+        public IActionResult OnPostRate(int id, int _rate)
         {
-            var rating = new UserRate();
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the logged-in user's userId
-            if (userId!=null && id!=0 && _rate!=0)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userId != null && id != 0 && _rate != 0)
+        {
+            // Kullanıcının bu challenge için zaten oy verip vermediğini kontrol edin
+            var existingVote = _context.UserRates
+                .FirstOrDefault(r => r.UserId == userId && r.TodoId == id);
+
+            if (existingVote == null)
             {
-                rating.UserId = userId;
-                rating.Rate = (short?)_rate;
-                rating.TodoId = id;
-                ToDoDb.UserRates.Add(rating);
-                ToDoDb.SaveChanges();
-                flag=true;
+                // Kullanıcı henüz oy kullanmadıysa, oy kullanın
+                var rating = new UserRate
+                {
+                    UserId = userId,
+                    Rate = (short?)_rate,
+                    TodoId = id
+                };
+
+                _context.UserRates.Add(rating);
+                _context.SaveChanges();
+                return RedirectToPage("/UserRates");
             }
-            if (flag)
+            else
             {
-                Response.Redirect("/UserRates"); 
+                // Kullanıcı bu challenge için zaten oy kullanmış
+                // Bu durumu gereksinimlerinize göre ele alabilirsiniz
+                // Şu an için, aynı sayfaya geri yönlendirelim
+                return Page();
             }
-            else{
-                Page();
-            }
+        }
+        return Page();
         }
     }
 }

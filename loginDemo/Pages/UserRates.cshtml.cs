@@ -28,21 +28,21 @@ namespace MyApp.Namespace
 
         public void OnGet()
         {
-            // Tüm ToDoları çekmek için LINQ sorgusu
-            ToDoList = _context.TblTodos.Where(item => item.IsDeleted == false).ToList();
+             // Retrieve all ToDos
+        ToDoList = _context.TblTodos.Where(item => item.IsDeleted == false).ToList();
 
-            // Her ürün için ortalama puanı hesaplayın
-            AverageRatings = (from todo in _context.TblTodos
-                              join rate in _context.UserRates on todo.Id equals rate.TodoId into gj
-                              from subRate in gj.DefaultIfEmpty()
-                              group subRate by todo into g
-                              select new AverageRating
-                              {
-                                  TodoId = g.Key.Id,
-                                  Average = g.Any() ? (float)g.Average(r => r.Rate ?? 0) : 0
-                              }).ToList();
+        // Calculate average ratings for each ToDo
+        AverageRatings = (from todo in _context.TblTodos
+                          join rate in _context.UserRates on todo.Id equals rate.TodoId into gj
+                          from subRate in gj.DefaultIfEmpty()
+                          group subRate by todo into g
+                          select new AverageRating
+                          {
+                              TodoId = g.Key.Id,
+                              Average = g.Any() ? (float)g.Average(r => r.Rate ?? 0) : 0
+                          }).ToList();
 
-            Ratings = AverageRatings.Select(x => x.Average).ToList();
+        Ratings = AverageRatings.Select(x => x.Average).ToList();
         }
     }
 }

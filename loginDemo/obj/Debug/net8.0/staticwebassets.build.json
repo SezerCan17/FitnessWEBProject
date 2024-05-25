@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oC2yyNYzTxuTHLLD7eKcqzfdXpF0v04lk5DUYN6aA+s=",
+  "Hash": "JlOAVMCdQbNCL/at1eHHM+GIF/tDs5Hp4vJ4rxUTJ/M=",
   "Source": "loginDemo",
   "BasePath": "_content/loginDemo",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\cartoon-gym-with-machines_23-2151148971.avif",
+      "SourceId": "loginDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\",
+      "BasePath": "_content/loginDemo",
+      "RelativePath": "Images/cartoon-gym-with-machines_23-2151148971.avif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\cartoon-gym-with-machines_23-2151148971.avif"
     },
     {
       "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\empty_profile.jpg",

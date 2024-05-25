@@ -1,4 +1,11 @@
 /* _content/loginDemo/Pages/Shared/_Layout.cshtml.rz.scp.css */
+
+body[b-5zabow9iaj] {
+  background-image: url('C:\Users\cans7\Documents\GitHub\FitnessWEBProject\loginDemo\wwwroot\Images\gym_background.jpg');
+  background-size: cover; /* Resmi kaplama şeklini belirtir */
+  background-repeat: no-repeat; /* Resmin tekrarlanmasını engeller */
+}
+
 a.navbar-brand[b-5zabow9iaj] {
   white-space: normal;
   text-align: center;
@@ -45,10 +52,9 @@ button.accept-policy[b-5zabow9iaj] {
   white-space: nowrap;
   line-height: 60px;
 }
-body[b-5zabow9iaj] {
-  background-image: url('file:///C:/Users/cans7/Documents/GitHub/FitnessWEBProject/loginDemo/wwwroot/Images/gym_background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
+
+
+
 
 

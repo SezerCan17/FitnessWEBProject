@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\loginDemo.bundle.scp.css"
     },
     {
+      "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\cartoon-gym-with-machines_23-2151148971.avif",
+      "PackagePath": "staticwebassets\\Images\\cartoon-gym-with-machines_23-2151148971.avif"
+    },
+    {
       "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\empty_profile.jpg",
       "PackagePath": "staticwebassets\\Images\\empty_profile.jpg"
     },

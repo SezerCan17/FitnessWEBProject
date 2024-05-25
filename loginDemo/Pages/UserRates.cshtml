@@ -4,8 +4,8 @@
     ViewData["Title"] = "Rate todo";
 
     ViewBag.Ratings = string.Join(", ", Model.Ratings);
-
 }
+
 <link href="~/css/jquery.rateyo.min.css" rel="stylesheet" />
 
 <div class="container">
@@ -13,7 +13,7 @@
         @{
             @foreach (var item in Model.ToDoList)
             {
-
+                var initialRating = Model.AverageRatings.FirstOrDefault(x => x.TodoId == item.Id)?.Average ?? 0;
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
@@ -26,17 +26,17 @@
                                 <button type="submit" class="btn btn-primary" asp-page="Rate" asp-route-id="@item.Id">Rate it!</button><br>
                             </form>
                             <form method="post">
-                                 <button type="submit" class="btn btn-primary" asp-page="Favorite" asp-route-id="@item.Id">Add to Favorites</button>
+                                <button type="submit" class="btn btn-primary" asp-page="Favorite" asp-route-id="@item.Id">Add to Favorites</button>
                             </form>
                         </div>
-                        <div class="rateYo"></div>
+                        <div class="rateYo" data-rating="@initialRating"></div>
                     </div>
                 </div>
-
             }
         }
     </div>
 </div>
+
 <script src="~/js/jquery.min.js"></script>
 <script src="~/js/jquery.rateyo.min.js"></script>
 @section Scripts {
@@ -45,14 +45,14 @@
     }
     <script type="text/javascript">
         $(function () {
-            var Ratings = [@ViewBag.Ratings],
-                stars = $('.rateYo');
-            for (var i = 0; i < stars.length; i++) {
-                $('.rateYo').eq(i).rateYo({
-                    rating: Ratings[i],
+            var stars = $('.rateYo');
+            stars.each(function () {
+                var rating = $(this).data('rating');
+                $(this).rateYo({
+                    rating: rating,
                     readOnly: true
                 });
-            }
+            });
         });
     </script>
 }
