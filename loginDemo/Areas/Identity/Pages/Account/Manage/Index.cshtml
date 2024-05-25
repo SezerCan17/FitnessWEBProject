@@ -31,10 +31,10 @@
                         </div>
                         
                         <div class="form-floating mb-3">
-    <select id="city" asp-for="SelectedCity" asp-items="Model.Cities" class="form-select">
-        <option value="">Select City</option>
-        <option value="Adana">Adana</option>
-        <option value="Adıyaman">Adıyaman</option>
+                            <select id="city" asp-for="SelectedCity" asp-items="Model.Cities" class="form-select">
+                                <option value="">Select City</option>
+                                <option value="Adana">Adana</option>
+                                 <option value="Adıyaman">Adıyaman</option>
         <option value="Afyonkarahisar">Afyonkarahisar</option>
         <option value="Ağrı">Ağrı</option>
         <option value="Amasya">Amasya</option>
@@ -114,10 +114,11 @@
         <option value="Kilis">Kilis</option>
         <option value="Osmaniye">Osmaniye</option>
         <option value="Düzce">Düzce</option>
-    </select>
-    <label for="city">City</label>
-    <span asp-validation-for="SelectedCity" class="text-danger"></span>
-</div>
+                                <!-- Diğer şehir seçenekleri buraya eklenecek -->
+                            </select>
+                            <label for="city">City</label>
+                            <span asp-validation-for="SelectedCity" class="text-danger"></span>
+                        </div>
 
                         <div class="mb-3">
                             <label asp-for="FileUpload.FormFile" class="form-label">Profile Picture</label>
@@ -135,8 +136,10 @@
                     </form>
                 </div>
             </div>
+        </div>
 
-            <div class="card">
+        <div class="col-md-4">
+            <div class="card mb-4">
                 <div class="card-header">
                     <h4 class="card-title">Favorite Challenges</h4>
                 </div>
