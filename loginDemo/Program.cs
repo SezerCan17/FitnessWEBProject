@@ -90,12 +90,12 @@ public static class SeedData
 
         var admin = new IdentityUser
         {
-            UserName = "admin2@gmail.com",
-            Email = "admin2@gmail.com"
+            UserName = "admin@gmail.com",
+            Email = "admin@gmail.com"
         };
 
-        string adminPassword = "Bamgüm58582";
-        var adminUser = await userManager.FindByEmailAsync("admin2@gmail.com");
+        string adminPassword = "Fitness123..";
+        var adminUser = await userManager.FindByEmailAsync("admin@gmail.com");
 
         if (adminUser == null)
         {
