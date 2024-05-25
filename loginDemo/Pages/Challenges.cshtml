@@ -1,66 +1,66 @@
 ﻿@page
 @model MyApp.Namespace.ToDoModel
 @{
-    ViewData["Title"] = "Challenges Creater";
+    ViewData["Title"] = "Challenges Creator";
 }
+
 <h2>Challenges</h2>
 
-<form method="post">
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form id="challengeForm" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="NewToDo.Period" class="control-label"></label>
+        <select asp-for="NewToDo.Period" class="form-control" id="PeriodSelect" required>
+            <option value="" disabled selected>-- Select Period --</option>
+            <option value="1_Hafta">1_Hafta</option>
+            <option value="2_Hafta">2_Hafta</option>
+            <option value="3_Hafta">3_Hafta</option>
+            <option value="4_Hafta">4_Hafta</option>
+        </select>
+        <span asp-validation-for="NewToDo.Period" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewToDo.Difficulty" class="control-label"></label>
+        <select asp-for="NewToDo.Difficulty" class="form-control" id="DifficultySelect" required>
+            <option value="" disabled selected>-- Select Difficulty --</option>
+            <option value="1_Easy">Easy</option>
+            <option value="2_Medium">Medium</option>
+            <option value="3_Hard">Hard</option>
+        </select>
+        <span asp-validation-for="NewToDo.Difficulty" class="text-danger"></span>
+    </div>
 <div class="form-group">
-    <label asp-for="NewToDo.Period" class="control-label"></label>
-     <select asp-for="NewToDo.Period" class="form-control" id="PizzaSize">
-        <option value="">-- Select Period --</option>
-        <option value="1_Hafta">1_Hafta</option>
-        <option value="2_Hafta">2_Hafta</option>
-        <option value="3_Hafta">3_Hafta</option>
-        <option value="4_Hafta">4_Hafta</option>
-    </select>
-    <span asp-validation-for="NewToDo.Period" class="text-danger"></span>
-</div>
-<div class="form-group">
-    <label asp-for="NewToDo.Difficulty" class="control-label"></label>
-    <select asp-for="NewToDo.Difficulty" class="form-control" id="PizzaSize">
-        <option value="">-- Select Difficulty --</option>
-        <option value="1_Easy">Easy</option>
-        <option value="2_Medium">Medium</option>
-        <option value="3_Hard">Hard</option>
-    </select>
-    <span asp-validation-for="NewToDo.Difficulty" class="text-danger"></span>
-</div>
-<div class="form-group">
-    <label asp-for="NewToDo.Instruction" class="control-label"></label>
-    <input asp-for="NewToDo.Instruction" class="form-control" />
-    <span asp-validation-for="NewToDo.Instruction" class="text-danger"></span>
-</div>
+        <label asp-for="NewToDo.Instruction" class="control-label"></label>
+        <input asp-for="NewToDo.Instruction" class="form-control" required />
+        <span asp-validation-for="NewToDo.Instruction" class="text-danger"></span>
+    </div>
 
-<div class="form-group">
-    <label asp-for="NewToDo.Category" class="control-label"></label>
-    <select asp-for="NewToDo.Category" class="form-control" id="PizzaSize">
-        <option value="">-- Select Category --</option>
-        <option value="Step">Step</option>
-        <option value="Squad">Squad</option>
-        <option value="Cardio">Cardio</option>
-        <option value="Weight Loss">Weight Loss</option>
-
-    </select>
-    <span asp-validation-for="NewToDo.Category" class="text-danger"></span>
-</div>
-<div class="form-group">
-    <input type="submit" value="Create" class="btn btn-primary" />
-</div>
+    <div class="form-group">
+        <label asp-for="NewToDo.Category" class="control-label"></label>
+        <select asp-for="NewToDo.Category" class="form-control" id="CategorySelect" required>
+            <option value="" disabled selected>-- Select Category --</option>
+            <option value="Step">Step</option>
+            <option value="Squad">Squad</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Weight_L">Weight Loss</option>
+        </select>
+        <span asp-validation-for="NewToDo.Category" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" id="submitButton" />
+    </div>
 </form>
+
 @section Scripts {
 <partial name="_ValidationScriptsPartial" />
 }
-
 <table class="table mt-5">
     <thead>
         <tr>
             <th scope="col">Period</th>
             <th scope="col">Difficulty</th>
             <th scope="col">Category</th>
-            <th scope="col">Instruction</th>
+            <th scope="col">Challenge_instructions</th>
             <th scope="col">Delete</th>
         </tr>
     </thead>

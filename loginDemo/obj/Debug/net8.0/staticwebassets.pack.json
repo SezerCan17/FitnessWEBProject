@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\loginDemo.bundle.scp.css"
     },
     {
+      "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\cartoon-gym-with-machines.jpg",
+      "PackagePath": "staticwebassets\\Images\\cartoon-gym-with-machines.jpg"
+    },
+    {
       "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\cartoon-gym-with-machines_23-2151148971.avif",
       "PackagePath": "staticwebassets\\Images\\cartoon-gym-with-machines_23-2151148971.avif"
     },
@@ -15,6 +19,10 @@
     {
       "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\gym_background.jpg",
       "PackagePath": "staticwebassets\\Images\\gym_background.jpg"
+    },
+    {
+      "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\css\\General.css",
+      "PackagePath": "staticwebassets\\css\\General.css"
     },
     {
       "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\css\\jquery.rateyo.min.css",

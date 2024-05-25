@@ -86,16 +86,17 @@ modelBuilder.Entity<UserDetail>(entity =>
         });
 
         modelBuilder.Entity<UserRate>(entity =>
-        {
-            entity.ToTable("userRate");
+            {
+                entity.ToTable("userRate");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Rate).HasColumnName("rate");
+                entity.Property(e => e.TodoId).HasColumnName("todoId");
+                entity.Property(e => e.UserId).HasMaxLength(450).HasColumnName("userId");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Rate).HasColumnName("rate");
-            entity.Property(e => e.TodoId).HasColumnName("todoId");
-            entity.Property(e => e.UserId)
-                .HasMaxLength(450)
-                .HasColumnName("userId");
-        });
+    entity.Property<string>("Comment")
+        .HasColumnType("nvarchar(max)")
+        .HasColumnName("comment");
+            });
 
         OnModelCreatingPartial(modelBuilder);
     }

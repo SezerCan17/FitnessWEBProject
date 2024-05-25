@@ -12,4 +12,6 @@ public partial class UserRate
     public int? TodoId { get; set; }
 
     public short? Rate { get; set; }
+
+    public string? Comment { get; set; }
 }

@@ -26,7 +26,8 @@ namespace MyApp.Namespace
 
         public List<float> Ratings { get; set; }
 
-        public void OnGet()
+            public List<UserRate> UserComments { get; set; }
+public void OnGet()
         {
              // Retrieve all ToDos
         ToDoList = _context.TblTodos.Where(item => item.IsDeleted == false).ToList();
@@ -43,6 +44,9 @@ namespace MyApp.Namespace
                           }).ToList();
 
         Ratings = AverageRatings.Select(x => x.Average).ToList();
+
+
+         UserComments = _context.UserRates.ToList();
         }
     }
 }

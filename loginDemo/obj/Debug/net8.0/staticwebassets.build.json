@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JlOAVMCdQbNCL/at1eHHM+GIF/tDs5Hp4vJ4rxUTJ/M=",
+  "Hash": "rBGbRVgJR+lWOThh4nSKJxGAVUPxtx9TfW8GK063wpk=",
   "Source": "loginDemo",
   "BasePath": "_content/loginDemo",
   "Mode": "Default",
@@ -1195,6 +1195,25 @@
       "OriginalItemSpec": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\loginDemo.bundle.scp.css"
     },
     {
+      "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\css\\General.css",
+      "SourceId": "loginDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\",
+      "BasePath": "_content/loginDemo",
+      "RelativePath": "css/General.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\General.css"
+    },
+    {
       "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\css\\jquery.rateyo.min.css",
       "SourceId": "loginDemo",
       "SourceType": "Discovered",
@@ -1269,6 +1288,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\cartoon-gym-with-machines_23-2151148971.avif"
+    },
+    {
+      "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\cartoon-gym-with-machines.jpg",
+      "SourceId": "loginDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\",
+      "BasePath": "_content/loginDemo",
+      "RelativePath": "Images/cartoon-gym-with-machines.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\cartoon-gym-with-machines.jpg"
     },
     {
       "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\empty_profile.jpg",

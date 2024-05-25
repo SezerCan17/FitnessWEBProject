@@ -7,18 +7,21 @@
 <form method="post">
     <div id="rateIt"></div>
     <br>
+    <div class="form-group">
+        <label for="commentText">Yorum</label>
+        <textarea id="commentText" name="commentText" class="form-control" rows="4"></textarea>
+    </div>
     <div>
         <button type="submit" class="btn btn-primary" asp-page-handler="Rate">Rate it</button>
         <input name="_rate" type="hidden" id="rating" />
     </div>
+    
 </form>
 
- 
 <script src="~/js/jquery.min.js"></script>
 <script src="~/js/jquery.rateyo.min.js"></script>
 <script>
- $(function () {
-
+    $(function () {
         var $rateYo = $("#rateIt").rateYo({
             rating: 0,
             fullStar: true,
@@ -27,13 +30,15 @@
             }
         });
 
-        $("#getRating").click(function () {
 
+
+        // Get Rating düğmesine tıklandığında
+        $("#getRating").click(function () {
             /* get rating */
             var rating = $rateYo.rateYo("rating");
-
             window.alert("You give " + rating + " rate!");
         });
     });
- 
 </script>
+
+

@@ -1,10 +1,4 @@
 ﻿
-body {
-  background-image: url('C:\Users\cans7\Documents\GitHub\FitnessWEBProject\loginDemo\wwwroot\Images\gym_background.jpg');
-  background-size: cover; /* Resmi kaplama şeklini belirtir */
-  background-repeat: no-repeat; /* Resmin tekrarlanmasını engeller */
-}
-
 a.navbar-brand {
   white-space: normal;
   text-align: center;

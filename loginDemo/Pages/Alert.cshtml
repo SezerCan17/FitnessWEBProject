@@ -1,0 +1,7 @@
+@if (TempData["AlertMessage"] != null)
+{
+    <script>
+        // JavaScript kodunu sadece belirli bir koşul sağlandığında çalıştır
+        alert("@TempData["AlertMessage"]");
+    </script>
+}

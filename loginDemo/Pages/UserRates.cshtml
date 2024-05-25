@@ -28,15 +28,26 @@
                             <form method="post">
                                 <button type="submit" class="btn btn-primary" asp-page="Favorite" asp-route-id="@item.Id">Add to Favorites</button>
                             </form>
+                            <div class="user-comments">
+                        <label style="color: black; font-weight: bold; font-size: 16px; overflow: hidden; height: 3em;">Comments</label>
+                <div style="color: black; overflow: hidden; height: 3em;"> <!-- Sınırlı yorum görüntülemesi -->
+                @foreach (var comment in Model.UserComments.Where(c => c.TodoId == item.Id))
+                    {
+                        <p style="margin: 0; padding: 0;">-@comment.Comment</p>
+                    }
+                </div>
+
+            </div>
                         </div>
                         <div class="rateYo" data-rating="@initialRating"></div>
                     </div>
                 </div>
+
+
             }
         }
     </div>
 </div>
-
 <script src="~/js/jquery.min.js"></script>
 <script src="~/js/jquery.rateyo.min.js"></script>
 @section Scripts {
