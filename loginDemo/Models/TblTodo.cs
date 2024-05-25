@@ -15,7 +15,7 @@ public partial class TblTodo
 
     public string? Instruction { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public string? UserId { get; set; }
 }

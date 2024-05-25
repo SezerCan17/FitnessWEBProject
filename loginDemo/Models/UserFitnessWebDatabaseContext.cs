@@ -23,7 +23,10 @@ public partial class UserFitnessWebDatabaseContext : DbContext
 
     public virtual DbSet<UserRate> UserRates { get; set; }
 
-   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public DbSet<TblTodo> TblFavorites { get; set; } // TblTodo tablosu için DbSet özelliği eklendi
+    public object FavoriteModel { get; internal set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var builder = WebApplication.CreateBuilder();
         var connectionString = builder.Configuration.GetConnectionString ("MyConnection");

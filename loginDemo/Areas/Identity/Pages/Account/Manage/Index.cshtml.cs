@@ -16,39 +16,29 @@ namespace loginDemo.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
+        public string StatusMessage { get; set; }
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserFitnessWebDatabaseContext _context;
 
-        public IndexModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            UserFitnessWebDatabaseContext context)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
-        }
+        public List<TblTodo> FavoriteChallenges { get; set; }
 
-        [BindProperty]
         public BufferedSingleFileUploadDb FileUpload { get; set; } = new BufferedSingleFileUploadDb();
 
         public byte[]? Picture { get; set; }
         public UserDetail? ProfileDetail { get; set; }
 
-        [TempData]
-        public string? StatusMessage { get; set; }
-
         [BindProperty]
         public InputModel Input { get; set; } = new InputModel();
-public class InputModel
+
+        public class InputModel
         {
             [Phone]
             [Display(Name = "Phone number")]
             public string? PhoneNumber { get; set; }
 
             [Display(Name = "Bio")]
-            public string? Bio { get; set; }  // Yeni bio alanı
+            public string? Bio { get; set; }
         }
 
         public class BufferedSingleFileUploadDb
@@ -61,55 +51,15 @@ public class InputModel
 
         [BindProperty]
         public string SelectedCity { get; set; } = string.Empty;
-private async Task LoadAsync(IdentityUser user)
+
+        public IndexModel(
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            UserFitnessWebDatabaseContext context)
         {
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
-
-            // Fetch user profile details
-            ProfileDetail = await _context.UserDetails
-                .FirstOrDefaultAsync(p => p.UserId == user.Id);
-
-            // Fetch cities from the database
-            var cities = await _context.TblCities.ToListAsync();
-            Cities = cities.Select(c => new SelectListItem
-            {
-                Value = c.City,
-                Text = c.City
-            }).ToList();
-
-            // Set properties based on the user profile
-            if (ProfileDetail != null)
-            {
-                Picture = ProfileDetail.Photo ?? Array.Empty<byte>();
-                SelectedCity = ProfileDetail.City;
-                Input.Bio = ProfileDetail.bio;
-            }
-            else
-            {
-                // Provide a default picture if no profile picture is available
-                string path = "./wwwroot/images/empty_profile.jpg";
-                using var stream = System.IO.File.OpenRead(path);
-                var memoryStream = new MemoryStream();
-                await stream.CopyToAsync(memoryStream);
-                Picture = memoryStream.ToArray();
-// Create a new profile detail entry
-                ProfileDetail = new UserDetail
-                {
-                    UserId = user.Id,
-                    Photo = Picture,
-                    City = string.Empty
-                };
-                _context.UserDetails.Add(ProfileDetail);
-                await _context.SaveChangesAsync();
-            }
-
-            // Set input model properties
-            Input = new InputModel
-            {
-                PhoneNumber = phoneNumber,
-                Bio = ProfileDetail.bio // Ekleme
-            };
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _context = context;
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -122,7 +72,54 @@ private async Task LoadAsync(IdentityUser user)
             await LoadAsync(user);
             return Page();
         }
-public async Task<IActionResult> OnPostAsync()
+
+        private async Task LoadAsync(IdentityUser user)
+        {
+            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+
+            ProfileDetail = await _context.UserDetails
+                .FirstOrDefaultAsync(p => p.UserId == user.Id);
+
+            FavoriteChallenges = GetFavoriteChallenges(user.Id);
+
+            var cities = await _context.TblCities.ToListAsync();
+            Cities = cities.Select(c => new SelectListItem
+            {
+                Value = c.City,
+                Text = c.City
+            }).ToList();
+
+            if (ProfileDetail != null)
+            {
+                Picture = ProfileDetail.Photo ?? Array.Empty<byte>();
+                SelectedCity = ProfileDetail.City;
+                Input.Bio = ProfileDetail.bio;
+            }
+            else
+            {
+                string path = "./wwwroot/images/empty_profile.jpg";
+                using var stream = System.IO.File.OpenRead(path);
+                var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                Picture = memoryStream.ToArray();
+                ProfileDetail = new UserDetail
+                {
+                    UserId = user.Id,
+                    Photo = Picture,
+                    City = string.Empty
+                };
+                _context.UserDetails.Add(ProfileDetail);
+                await _context.SaveChangesAsync();
+            }
+
+            Input = new InputModel
+            {
+                PhoneNumber = phoneNumber,
+                Bio = ProfileDetail.bio
+            };
+        }
+
+        public async Task<IActionResult> OnPostAsync()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -142,7 +139,6 @@ public async Task<IActionResult> OnPostAsync()
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
             }
@@ -151,12 +147,11 @@ public async Task<IActionResult> OnPostAsync()
 
             if (ProfileDetail != null)
             {
-                // Update the city
                 if (SelectedCity != ProfileDetail.City)
                 {
                     ProfileDetail.City = SelectedCity;
                 }
-// Update the profile photo if a new file is uploaded
+
                 if (FileUpload.FormFile != null)
                 {
                     var memoryStream = new MemoryStream();
@@ -164,7 +159,6 @@ public async Task<IActionResult> OnPostAsync()
                     ProfileDetail.Photo = memoryStream.ToArray();
                 }
 
-                // Update the bio if it has changed
                 if (Input.Bio != null && Input.Bio != ProfileDetail.bio)
                 {
                     ProfileDetail.bio = Input.Bio;
@@ -175,8 +169,23 @@ public async Task<IActionResult> OnPostAsync()
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
             return RedirectToPage();
+        }
+
+        public List<TblTodo> GetFavoriteChallenges(string userId)
+        {
+            var user = _context.UserDetails.FirstOrDefault(u => u.UserId == userId);
+            if (user != null)
+            {
+                var favoriteChallengeIds = user.favorite?.Split(',').Select(int.Parse).ToList();
+                if (favoriteChallengeIds != null && favoriteChallengeIds.Any())
+                {
+                    return _context.TblTodos
+                        .Where(t => favoriteChallengeIds.Contains(t.Id) && !t.IsDeleted) // !IsDeleted ise favorilere eklenir
+                        .ToList();
+                }
+            }
+            return new List<TblTodo>();
         }
     }
 }

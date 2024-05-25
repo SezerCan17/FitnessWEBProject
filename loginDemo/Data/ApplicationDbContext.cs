@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using loginDemo.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace loginDemo.Data;
@@ -9,4 +10,7 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+  
+    
 }
+

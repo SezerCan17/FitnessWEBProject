@@ -1,0 +1,76 @@
+@page
+@model MyApp.Namespace.ToDoSearchModel
+@{
+    ViewData["Title"] = "Search Challenges";
+}
+
+<h2>Search Challenges</h2>
+
+<form method="get">
+    <div class="form-group">
+        <label for="searchKeyword">Keyword</label>
+        <input type="text" id="searchKeyword" name="SearchKeyword" value="@Model.SearchKeyword" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty" name="Difficulty" class="form-control">
+            <option value="">All</option>
+            <option value="1_Easy">Easy</option>
+            <option value="2_Medium">Medium</option>
+            <option value="3_Hard">Hard</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="Category" class="form-control">
+            <option value="">All</option>
+            <option value="Step">Step</option>
+            <option value="Squad">Squad</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Weight_Loss">Weight Loss</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="period">Period</label>
+        <select id="period" name="Period" class="form-control">
+            <option value="">All</option>
+            <option value="1_Hafta">1 Hafta</option>
+            <option value="2_Hafta">2 Hafta</option>
+            <option value="3_Hafta">3 Hafta</option>
+            <option value="4_Hafta">4 Hafta</option>
+        </select>
+        </div>
+    <div class="form-group">
+        <label for="sortOrder">Sort By</label>
+        <select id="sortOrder" name="SortOrder" class="form-control">
+            <option value="">None</option>
+            <option value="category_asc">Category (Ascending)</option>
+            <option value="category_desc">Category (Descending)</option>
+            <option value="difficulty_asc">Difficulty (Ascending)</option>
+            <option value="difficulty_desc">Difficulty (Descending)</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">Period</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">Category</th>
+            <th scope="col">Challenge Instructions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in Model.ToDoList)
+        {
+            <tr>
+                <td>@todo.Period</td>
+                <td>@todo.Difficulty</td>
+                <td>@todo.Category</td>
+                <td>@todo.Instruction</td>
+            </tr>
+        }
+    </tbody>
+</table>

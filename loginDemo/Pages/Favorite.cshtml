@@ -1,0 +1,26 @@
+@page
+@model FavoriteModel
+@{
+    ViewData["Title"] = "Favorite Challenges";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.ToDoList)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Period</h4>
+                        <h6 class="card-title">@item.Difficulty</h6>
+                        <h6 class="card-title">@item.Category</h6>
+                        <h6 class="card-title">@item.Instruction</h6>
+                        <form method="post">
+                            <button type="submit" class="btn btn-primary" asp-page-handler="OnPost" asp-route-id="@item.Id">Add to Favorites</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
