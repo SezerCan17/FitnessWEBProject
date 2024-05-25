@@ -35,15 +35,18 @@ namespace MyApp.Namespace
 {
     var query = _context.TblTodos.Where(t => !t.IsDeleted).AsQueryable();
 
-    // Kullanıcı zorluk seviyesini belirtti mi?
-    bool difficultySpecified = !string.IsNullOrEmpty(Difficulty);
+    var selectedProperties = new List<string> { Difficulty, Category, Period };
+    selectedProperties.RemoveAll(string.IsNullOrEmpty);
 
-    // Kullanıcı zorluk seviyesini belirttiyse, diğer filtreleme kriterlerine bakmaksızın tüm meydan okumalarını getirin
-    if (difficultySpecified)
+    if (selectedProperties.Count == 2)
     {
-        query = query.Where(t => t.Difficulty == Difficulty);
+        query = query.Where(t =>
+            (string.IsNullOrEmpty(Difficulty) || t.Difficulty == Difficulty) &&
+            (string.IsNullOrEmpty(Category) || t.Category == Category) &&
+            (string.IsNullOrEmpty(Period) || t.Period == Period)
+        );
     }
-    else // Kullanıcı zorluk seviyesini belirtmemişse, mevcut filtreleme mantığına devam edin
+    else
     {
         if (!string.IsNullOrEmpty(SearchKeyword))
         {
@@ -59,8 +62,13 @@ namespace MyApp.Namespace
         {
             query = query.Where(t => t.Period == Period);
         }
+
+        if (!string.IsNullOrEmpty(Difficulty))
+        {
+            query = query.Where(t => t.Difficulty == Difficulty);
+        }
     }
-    // Sorting
+
     switch (SortOrder)
     {
         case "category_asc":
@@ -81,6 +89,5 @@ namespace MyApp.Namespace
 
     ToDoList = query.ToList();
 }
-
     }
 }

@@ -47,9 +47,6 @@ namespace MyApp.Namespace
             }
             else
             {
-                // Kullanıcı bu challenge için zaten oy kullanmış
-                // Bu durumu gereksinimlerinize göre ele alabilirsiniz
-                // Şu an için, aynı sayfaya geri yönlendirelim
                 return Page();
             }
         }
