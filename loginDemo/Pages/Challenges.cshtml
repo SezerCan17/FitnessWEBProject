@@ -8,24 +8,32 @@
 
 <form id="challengeForm" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="NewToDo.Period" class="control-label"></label>
-        <select asp-for="NewToDo.Period" class="form-control" id="PeriodSelect" required>
-            <option value="" disabled selected>-- Select Period --</option>
-            <option value="1_Hafta">1_Hafta</option>
-            <option value="2_Hafta">2_Hafta</option>
-            <option value="3_Hafta">3_Hafta</option>
-            <option value="4_Hafta">4_Hafta</option>
-        </select>
-        <span asp-validation-for="NewToDo.Period" class="text-danger"></span>
-    </div>
+   <div class="form-group">
+    <label asp-for="NewToDo.Period" class="control-label"></label>
+    <select asp-for="NewToDo.Period" class="form-control" id="PeriodSelect" required>
+        <option value="" disabled selected>-- Select Period --</option>
+    </select>
+    <span asp-validation-for="NewToDo.Period" class="text-danger"></span>
+</div>
+
+<script>
+    // Hafta seçeneklerini oluştur
+    var select = document.getElementById("PeriodSelect");
+    for (var i = 1; i <= 52; i++) {
+        var option = document.createElement("option");
+        option.text = i + " Weeks";
+        option.value = i + "_Weeks";
+        select.appendChild(option);
+    }
+</script>
+
     <div class="form-group">
         <label asp-for="NewToDo.Difficulty" class="control-label"></label>
         <select asp-for="NewToDo.Difficulty" class="form-control" id="DifficultySelect" required>
             <option value="" disabled selected>-- Select Difficulty --</option>
-            <option value="1_Easy">Easy</option>
-            <option value="2_Medium">Medium</option>
-            <option value="3_Hard">Hard</option>
+            <option value="Basic">Basic</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Vigorous">Vigorous</option>
         </select>
         <span asp-validation-for="NewToDo.Difficulty" class="text-danger"></span>
     </div>
@@ -38,11 +46,29 @@
     <div class="form-group">
         <label asp-for="NewToDo.Category" class="control-label"></label>
         <select asp-for="NewToDo.Category" class="form-control" id="CategorySelect" required>
-            <option value="" disabled selected>-- Select Category --</option>
+             <optgroup label="Fitness">
             <option value="Step">Step</option>
             <option value="Squad">Squad</option>
             <option value="Cardio">Cardio</option>
             <option value="Weight_L">Weight Loss</option>
+            <option value="Strength_Training">Strength Training</option>
+        </optgroup>
+        <optgroup label="Yoga">
+            <option value="Hatha">Hatha Yoga</option>
+            <option value="Vinyasa">Vinyasa Yoga</option>
+            <option value="Ashtanga">Ashtanga Yoga</option>
+        </optgroup>
+        <optgroup label="Strength Training">
+            <option value="Powerlifting">Powerlifting</option>
+            <option value="Crossfit">Crossfit</option>
+            <option value="Bodybuilding">Bodybuilding</option>
+            <option value="Weightlifting">Weightlifting</option>
+        </optgroup>
+        <optgroup label="Aerobics">
+            <option value="Zumba">Zumba</option>
+            <option value="Pilates">Pilates</option>
+            <option value="Kickboxing">Kickboxing</option>
+        </optgroup>
         </select>
         <span asp-validation-for="NewToDo.Category" class="text-danger"></span>
     </div>
