@@ -1,7 +1,4 @@
 /* _content/loginDemo/Pages/Shared/_Layout.cshtml.rz.scp.css */
-/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
 a.navbar-brand[b-5zabow9iaj] {
   white-space: normal;
   text-align: center;
@@ -27,6 +24,7 @@ a[b-5zabow9iaj] {
 .border-top[b-5zabow9iaj] {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom[b-5zabow9iaj] {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -47,3 +45,10 @@ button.accept-policy[b-5zabow9iaj] {
   white-space: nowrap;
   line-height: 60px;
 }
+body[b-5zabow9iaj] {
+  background-image: url('file:///C:/Users/cans7/Documents/GitHub/FitnessWEBProject/loginDemo/wwwroot/Images/gym_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+

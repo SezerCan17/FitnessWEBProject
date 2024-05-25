@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bu+wbX3wHcIKizifqz+G2tvKjYOCmp38ruZNfhyaJQE=",
+  "Hash": "oC2yyNYzTxuTHLLD7eKcqzfdXpF0v04lk5DUYN6aA+s=",
   "Source": "loginDemo",
   "BasePath": "_content/loginDemo",
   "Mode": "Default",
@@ -1269,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\empty_profile.jpg"
+    },
+    {
+      "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\gym_background.jpg",
+      "SourceId": "loginDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\",
+      "BasePath": "_content/loginDemo",
+      "RelativePath": "Images/gym_background.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\gym_background.jpg"
     },
     {
       "Identity": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\js\\jquery.min.js",

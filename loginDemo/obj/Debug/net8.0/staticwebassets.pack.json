@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Images\\empty_profile.jpg"
     },
     {
+      "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\Images\\gym_background.jpg",
+      "PackagePath": "staticwebassets\\Images\\gym_background.jpg"
+    },
+    {
       "Id": "c:\\Users\\cans7\\Documents\\GitHub\\FitnessWEBProject\\loginDemo\\wwwroot\\css\\jquery.rateyo.min.css",
       "PackagePath": "staticwebassets\\css\\jquery.rateyo.min.css"
     },

@@ -37,6 +37,18 @@
                 <span asp-validation-for="FileUpload.FormFile" class="text-danger"></span>
             </div>
             <br>
+             <div class="row">
+    <div class="col-md-6">
+        <h4>Favori Challenges</h4>
+        <ul>
+            @foreach (var challenge in Model.FavoriteChallenges)
+            {
+                <li>@challenge.Period - @challenge.Difficulty - @challenge.Category - @challenge.Instruction</li>
+            }
+        </ul>
+    </div>
+</div>
+<br>
             <div class="form-group">
                 <label asp-for="Input.Bio">Bio</label>
                 <textarea asp-for="Input.Bio" class="form-control"></textarea>
@@ -46,18 +58,7 @@
             <br>
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
-        <div class="row">
-    <div class="col-md-6">
-        <h4>Favori Challenges</h4>
-        <ul>
-            @foreach (var challenge in Model.FavoriteChallenges)
-            {
-                <p>deneme</p>
-                <li>@challenge.Period - @challenge.Difficulty - @challenge.Category - @challenge.Instruction</li>
-            }
-        </ul>
-    </div>
-</div>
+       
 
     </div>
 </div>
