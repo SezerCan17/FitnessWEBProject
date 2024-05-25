@@ -1,47 +1,48 @@
-using System.Security.Claims;
-using loginDemo.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using loginDemo.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MyApp.Namespace
 {
-    [Authorize]
+    [Authorize] // Yetkilendirme belirtilmediğinde tüm yetkilendirilmiş kullanıcılara izin verir
     public class UserRatesModel : PageModel
     {
+        private readonly UserFitnessWebDatabaseContext _context;
+
+        public UserRatesModel(UserFitnessWebDatabaseContext context)
+        {
+            _context = context;
+        }
+
         [BindProperty]
-        public TblTodo NewToDo { get; set; } = default!;
+        public TblTodo NewToDo { get; set; }
 
-        public UserFitnessWebDatabaseContext ToDoDb = new();
+        public List<TblTodo> ToDoList { get; set; }
 
-        public List<TblTodo> ToDoList { get;set; } = default!;
+        public List<AverageRating> AverageRatings { get; set; }
 
-        public List<AverageRating> AverageRatings { get;set; } = default!;
-
-        public List<float> Ratings { get;set;} = default!;
+        public List<float> Ratings { get; set; }
 
         public void OnGet()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the logged-in user's userId
+            // Tüm ToDoları çekmek için LINQ sorgusu
+            ToDoList = _context.TblTodos.Where(item => item.IsDeleted == false).ToList();
 
-            // LINQ query to retrieve items where IsDeleted is false and other users' ToDos
-            ToDoList = (from item in ToDoDb.TblTodos
-                          where item.IsDeleted == false
-                          where item.UserId != userId
-                          select item).ToList();
+            // Her ürün için ortalama puanı hesaplayın
+            AverageRatings = (from todo in _context.TblTodos
+                              join rate in _context.UserRates on todo.Id equals rate.TodoId into gj
+                              from subRate in gj.DefaultIfEmpty()
+                              group subRate by todo into g
+                              select new AverageRating
+                              {
+                                  TodoId = g.Key.Id,
+                                  Average = g.Any() ? (float)g.Average(r => r.Rate ?? 0) : 0
+                              }).ToList();
 
-            // Calculate average rating for each product
-            AverageRatings = (from todo in ToDoDb.TblTodos
-                                 join rate in ToDoDb.UserRates on todo.Id equals rate.TodoId into gj
-                                 from subRate in gj.DefaultIfEmpty()
-                                 group subRate by todo into g
-                                 select new AverageRating
-                                 {
-                                    TodoId = g.Key.Id,
-                                    Average = g.Any() ? (float)g.Average(r => r.Rate ?? 0) : 0
-                                }).ToList();
-
-             Ratings = AverageRatings.Select(x => x.Average).ToList();
+            Ratings = AverageRatings.Select(x => x.Average).ToList();
         }
     }
- }
+}
