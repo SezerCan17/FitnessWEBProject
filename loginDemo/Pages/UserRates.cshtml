@@ -15,43 +15,31 @@
             {
                 var initialRating = Model.AverageRatings.FirstOrDefault(x => x.TodoId == item.Id)?.Average ?? 0;
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                       <div class="card-body">
-    <h4 class="card-title"><b>@item.Period</b></h4>
-<h6 class="card-title"><b>@item.Difficulty</b></h6>
-<h6 class="card-title"><b>@item.Category</b></h6>
-<h6 class="card-title"><b>@item.Instruction</b></h6>
-
-    <!-- Add other properties as needed -->
-    <div class="row">
-        <div class="col">
-            <form method="post">
-                <button type="submit" class="btn btn-primary btn-block" style="background-color: #006400;">Rate it!</button>
-            </form>
-        </div>
-        <div class="col">
-            <form method="post">
-                <button type="submit" class="btn btn-primary btn-block" style="background-color: #006400;">Add to Favorites</button>
-            </form>
-        </div>
-    </div>
-    <div class="user-comments">
-        <label style="color: black; font-weight: bold; font-size: 16px; overflow: hidden; height: 3em;">Comments</label>
-        <div style="color: black; overflow: hidden; height: 3em;"> <!-- Sınırlı yorum görüntülemesi -->
-            @foreach (var comment in Model.UserComments.Where(c => c.TodoId == item.Id))
-            {
-                <p style="margin: 0; padding: 0;">-@comment.Comment</p>
-            }
-        </div>
-    </div>
-</div>
-
-
+                    <div class="card h-100">
+                        <div class="card-body rounded" style="background-color: rgba(255, 255, 255, 0.9);">
+                            <h4 class="card-title">@item.Category</h4>
+                            <h6 class="card-title">@item.Difficulty</h6>
+                            <h6 class="card-title">@item.Period</h6>
+                            <p class="card-text">@item.Instruction</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <div class="user-comments">
+                                    <label style="color: black; font-weight: bold; font-size: 16px; overflow: hidden; height: 3em;">Comments</label>
+                                    <div style="color: black; overflow: hidden; height: 3em;"> 
+                                        @foreach (var comment in Model.UserComments.Where(c => c.TodoId == item.Id))
+{
+                                            <p style="margin: 0; padding: 0;">-@comment.Comment</p>
+                                        }
+                                    </div>
+                                </div>
+                                <form method="post">
+                                    <button type="submit" class="btn btn-primary btn-sm" asp-page="Rate" asp-route-id="@item.Id">Rate it!</button>
+                                    <button type="submit" class="btn btn-primary btn-sm" asp-page="Favorite" asp-route-id="@item.Id">Add to Favorites</button>
+                                </form>
+                            </div>
+                        </div>
                         <div class="rateYo" data-rating="@initialRating"></div>
                     </div>
                 </div>
-
-
             }
         }
     </div>

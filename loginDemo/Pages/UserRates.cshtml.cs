@@ -31,8 +31,7 @@ public void OnGet()
         {
              // Retrieve all ToDos
         ToDoList = _context.TblTodos.Where(item => item.IsDeleted == false).ToList();
-
-        // Calculate average ratings for each ToDo
+// Calculate average ratings for each ToDo
         AverageRatings = (from todo in _context.TblTodos
                           join rate in _context.UserRates on todo.Id equals rate.TodoId into gj
                           from subRate in gj.DefaultIfEmpty()

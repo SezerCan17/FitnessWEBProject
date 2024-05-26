@@ -37,11 +37,6 @@
         </select>
         <span asp-validation-for="NewToDo.Difficulty" class="text-danger"></span>
     </div>
-<div class="form-group">
-        <label asp-for="NewToDo.Instruction" class="control-label"></label>
-        <input asp-for="NewToDo.Instruction" class="form-control" required />
-        <span asp-validation-for="NewToDo.Instruction" class="text-danger"></span>
-    </div>
 
     <div class="form-group">
         <label asp-for="NewToDo.Category" class="control-label"></label>
@@ -72,7 +67,15 @@
         </select>
         <span asp-validation-for="NewToDo.Category" class="text-danger"></span>
     </div>
+  
+
     <div class="form-group">
+        <label asp-for="NewToDo.Instruction" class="control-label"></label>
+        <input asp-for="NewToDo.Instruction" class="form-control" required />
+        <span asp-validation-for="NewToDo.Instruction" class="text-danger"></span>
+    </div>
+
+      <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" id="submitButton" />
     </div>
 </form>
