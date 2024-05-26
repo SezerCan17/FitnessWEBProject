@@ -19,8 +19,8 @@ namespace MyApp.Namespace
 
         public void OnGet()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Will give the logged-in user's userId
-            // LINQ query to retrieve items where IsDeleted is false
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
+           
             ToDoList = (from item in ToDoDb.TblTodos
                         where item.IsDeleted == false
                         where item.UserId == userId

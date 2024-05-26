@@ -8,7 +8,7 @@
     <div id="rateIt"></div>
     <br>
     <div class="form-group">
-        <label for="commentText">Yorum</label>
+        <label for="commentText">Comment</label>
         <textarea id="commentText" name="commentText" class="form-control" rows="4"></textarea>
     </div>
     <div>
@@ -32,9 +32,9 @@
 
 
 
-        // Get Rating düğmesine tıklandığında
+        
         $("#getRating").click(function () {
-            /* get rating */
+            
             var rating = $rateYo.rateYo("rating");
             window.alert("You give " + rating + " rate!");
         });

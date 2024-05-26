@@ -30,7 +30,7 @@ namespace loginDemo.Pages
                 if (favoriteChallengeIds != null && favoriteChallengeIds.Any())
                 {
                     return _context.TblTodos
-                        .Where(t => favoriteChallengeIds.Contains(t.Id) && !t.IsDeleted) // !IsDeleted ise favorilere eklenir
+                        .Where(t => favoriteChallengeIds.Contains(t.Id) && !t.IsDeleted) 
                         .ToList();
                 }
             }
@@ -42,12 +42,12 @@ namespace loginDemo.Pages
             var user = await _userManager.GetUserAsync(User);
             if (user != null && await _userManager.IsInRoleAsync(user, "Admin"))
             {
-                // Admin kullanıcıysa tüm meydan okumaları al
+                
                 ToDoList = _context.TblTodos.ToList();
             }
             else
             {
-                // Normal kullanıcıysa sadece silinmemiş meydan okumaları al
+                
                 ToDoList = _context.TblTodos.Where(t => !t.IsDeleted).ToList();
             }
         }
